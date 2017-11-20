@@ -1,4 +1,5 @@
 sudo: false
+dist: trusty
 language: go
 go:
   - 1.x
@@ -13,7 +14,7 @@ before_install:
   - export TRAVIS_BUILD_DIR=$HOME/gopath/src/sourcegraph.com/sourcegraph/go-diff
   - cd $TRAVIS_BUILD_DIR
 install:
-  - # Do nothing. This is needed to prevent default install action "go get -t -v ./..." from happening here (we want it to happen inside script step).
+  - # Do nothing. This is needed to prevent default install action "go get -t -v ./..." from happening here (we want it to happen inside the script step).
 script:
   - go get -t -v ./...
   - diff -u <(echo -n) <(gofmt -d -s .)
